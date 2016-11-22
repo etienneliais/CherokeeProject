@@ -95,10 +95,10 @@ public class CherokeeService {
 	public void createTraining(List<TrainingCollaborator> Collaborators) {
 		
 		EntityManager emtrainee = EmFactory.createEntityManager();
-		List<Training> list = new ArrayList<Training>();
 		emtrainee.getTransaction().begin();
-		for (TrainingCollaborator collab : Collaborators) {
-			
+		List<Training> list = new ArrayList<Training>();
+
+		for (TrainingCollaborator collab : Collaborators) {	
 			Training trainee = new Training();
 			trainee.setNbDays(collab.getNbDays());
 			trainee.setPlace(collab.getPlace());
@@ -107,13 +107,22 @@ public class CherokeeService {
 			trainee.setRealDate(collab.getRealDate());
 			trainee.setProvider(collab.getProvider());
 			list.add(trainee);
-			
-	        emtrainee.persist(trainee);
+			//emtrainee.persist(trainee);
+			Query q = emtrainee.createQuery("SELECT t FROM Training t WHERE t.nbDays=:nbDays AND t.place=:place AND t.trainingName=:trainingName AND t.dueDate=:dueDate AND t.realDate=:realDate AND t.provider=:provider");
+			q.setParameter("nbDays", collab.getNbDays());
+			q.setParameter("place", collab.getPlace());
+			q.setParameter("trainingName", collab.getTrainingName());
+			q.setParameter("dueDate", collab.getDueDate());
+			q.setParameter("realDate", collab.getRealDate());
+			q.setParameter("provider", collab.getProvider());
+			if(q.getResultList().isEmpty()){
+				emtrainee.persist(trainee);	
+					
+			};
 	          
 		}
 		 emtrainee.getTransaction().commit();
 		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
-		
 		emtrainee.close();
 	}
 
