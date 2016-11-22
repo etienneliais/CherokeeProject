@@ -13,28 +13,28 @@ public class TrainingChoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
-	//@OneToMany
-	//Collaborator collaborator;
-	//@OneToMany
-	//Training training;
+	@ManyToOne
+	Collaborator collaborator;
+	@ManyToOne
+	Training training;
 
 	public TrainingChoice() {
 	}
 
-	public TrainingChoice(Integer id) {
+
+	public TrainingChoice(Integer id, Collaborator collaborator, Training training) {
 		this.id = id;
+		this.collaborator = collaborator;
+		this.training = training;
 	}
-	
 
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	/*public Collaborator getCollaborator() {
+	public Collaborator getCollaborator() {
 		return collaborator;
 	}
 
@@ -48,6 +48,7 @@ public class TrainingChoice {
 
 	public void setTraining(Training training) {
 		this.training = training;
-	}*/
+	}
+
 
 }

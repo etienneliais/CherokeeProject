@@ -23,32 +23,25 @@ import cherokees.jpa.dao.*;
 public class Application {
 
 	public static void main(String[] args) throws IOException {
-		
-		CherokeeService service = new CherokeeService();
+
+		CherokeeDao cherokeeDao = new CherokeeDao();
+		CollaboratorDAO collabDao = new CollaboratorDAO();
+		TrainingDAO trainingDao = new TrainingDAO();
+		TrainingChoiceDAO trainingChoiceDao = new TrainingChoiceDAO();
 		CRUDService crud = new CRUDService();
 
-		List<TrainingCollaborator> listImport = service.createTrainingCollaborator();
+		List<TrainingCollaborator> listImport = cherokeeDao.createTrainingCollaborator();
 		List<Collaborator> listCollab = new ArrayList<>();
 		List<Training> listTraining = new ArrayList<>();
-		service.createTraining(listImport);
-		service.createCollaborator(listImport);
-		//service.createJoiningTable(listCollab, listTraining);
-		
-		
-		
-		
-		
-		//System.out.println("All : " + crud.findAllCollaborators());
-		// Collaborator collaborator = new Collaborator();
-		// Training training = new Training();
-		// TrainingChoice trainingChoice = new TrainingChoice();
-		
-		
-		//A ne pas toucher quoi qu'il arrive !!!
+		trainingDao.createTraining(listImport);
+		collabDao.createCollaborator(listImport);
+		trainingChoiceDao.createJoiningTable(listImport);
+
+		// A ne pas toucher quoi qu'il arrive !!!
 		EntityManager em = EmFactory.createEntityManager();
 		em.getTransaction().begin();
 		em.close();
-		EmFactory.getInstance().close();		
+		EmFactory.getInstance().close();
 	}
 
 }

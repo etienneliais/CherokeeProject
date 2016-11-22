@@ -2,34 +2,28 @@ package cherokees.jpa.entities.organisation;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
 public class Training {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
-	
+
 	float nbDays;
 	String place;
 	String trainingName;
 	Date dueDate;
 	Date realDate;
 	String provider;
-	@ManyToOne
-	TrainingChoice trainingChoice;
-		
+
+
 	public Training() {
-		
+
 	}
 
-
 	public Training(Integer id, float nbDays, String place, String trainingName, Date dueDate, Date realDate,
-			String provider, TrainingChoice trainingChoice) {
+			String provider) {
 		this.id = id;
 		this.nbDays = nbDays;
 		this.place = place;
@@ -37,19 +31,7 @@ public class Training {
 		this.dueDate = dueDate;
 		this.realDate = realDate;
 		this.provider = provider;
-		this.trainingChoice = trainingChoice;
 	}
-
-
-	public TrainingChoice getTrainingChoice() {
-		return trainingChoice;
-	}
-
-
-	public void setTrainingChoice(TrainingChoice trainingChoice) {
-		this.trainingChoice = trainingChoice;
-	}
-
 
 	public Integer getId() {
 		return id;
@@ -106,4 +88,5 @@ public class Training {
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
+
 }
