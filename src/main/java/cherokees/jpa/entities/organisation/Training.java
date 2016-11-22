@@ -20,12 +20,13 @@ public class Training {
 	Date dueDate;
 	Date realDate;
 	String provider;
-	/*@OneToMany
-	TrainingChoice trainingChoice;*/
+	//@OneToMany
+	//TrainingChoice trainingChoice;
 		
 	public Training() {
 		
 	}
+
 
 	public Training(Integer id, float nbDays, String place, String trainingName, Date dueDate, Date realDate,
 			String provider) {
@@ -37,6 +38,7 @@ public class Training {
 		this.realDate = realDate;
 		this.provider = provider;
 	}
+
 
 	public Integer getId() {
 		return id;

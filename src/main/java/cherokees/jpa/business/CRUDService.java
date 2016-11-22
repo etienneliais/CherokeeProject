@@ -16,9 +16,7 @@ public class CRUDService {
 		EntityManager emCollaborators = EmFactory.createEntityManager();
 		List<Collaborator> searchedCollaborators =  new ArrayList();
 		return emCollaborators.createQuery("select c from Collaborator c", Collaborator.class).getResultList();
-		
 	}
-	
 	
 	public List<Collaborator> findCollaboratorById(int id){
 		EntityManager emCollaborator = EmFactory.createEntityManager();
@@ -27,8 +25,6 @@ public class CRUDService {
 		q.setParameter("id", id);
 		searchedCollaborator = (List<Collaborator>) q.getResultList();
 		return searchedCollaborator;
-		
 	}
-	
 	
 }

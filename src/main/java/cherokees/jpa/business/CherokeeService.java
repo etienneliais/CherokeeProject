@@ -27,9 +27,6 @@ import cherokees.jpa.entities.organisation.Training;
 
 public class CherokeeService {
 	
-	  @PersistenceContext
-	    EntityManager em;
-
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 
@@ -152,7 +149,15 @@ public class CherokeeService {
 		emCollab.getTransaction().commit();
 		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
 		emCollab.close();
-		EmFactory.getInstance().close();
+		
+	}
+	
+	public void createJoiningTable(List<Collaborator> Collaborators, List<Training> Training){
+		EntityManager emJoin = EmFactory.createEntityManager();
+		emJoin.getTransaction().begin();
+			
+		
+		emJoin.close();
 		
 	}
 	

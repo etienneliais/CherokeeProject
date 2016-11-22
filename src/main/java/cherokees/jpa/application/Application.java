@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.hibernate.cfg.CreateKeySecondPass;
 
 import cherokees.jpa.business.CRUDService;
@@ -21,20 +24,28 @@ public class Application {
 
 	public static void main(String[] args) throws IOException {
 		
-		
 		CherokeeService service = new CherokeeService();
 		CRUDService crud = new CRUDService();
-		List<TrainingCollaborator> listBadass = service.createTrainingCollaborator();
-		service.createTraining(listBadass);
-		service.createCollaborator(listBadass);
+
+		List<TrainingCollaborator> listImport = service.createTrainingCollaborator();
+		List<Collaborator> listCollab = new ArrayList<>();
+		List<Training> listTraining = new ArrayList<>();
+		service.createTraining(listImport);
+		service.createCollaborator(listImport);
+		//service.createJoiningTable(listCollab, listTraining);
+		EntityManager em = EmFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.close();
+		EmFactory.getInstance().close();
+		
+		
+		
+		
 		
 		//System.out.println("All : " + crud.findAllCollaborators());
-		
-		
-		//Collaborator collaborator = new Collaborator();
-		//Training training = new Training();
-		//TrainingChoice trainingChoice = new TrainingChoice();
-		
+		// Collaborator collaborator = new Collaborator();
+		// Training training = new Training();
+		// TrainingChoice trainingChoice = new TrainingChoice();
 		
 	}
 

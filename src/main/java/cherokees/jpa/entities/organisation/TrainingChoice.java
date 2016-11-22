@@ -13,19 +13,18 @@ public class TrainingChoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
-	/*@OneToMany
-	Collaborator collaborator;
-	@ManyToOne
-	Training training;*/
+	//@OneToMany
+	//Collaborator collaborator;
+	//@ManyToOne
+	//Training training;
 
 	public TrainingChoice() {
 	}
 
-	/*public TrainingChoice(Integer id, Collaborator collaborator, Training training) {
+	public TrainingChoice(Integer id) {
 		this.id = id;
-		this.collaborator = collaborator;
-		this.training = training;
-	}*/
+	}
+	
 
 	public Integer getId() {
 		return id;
