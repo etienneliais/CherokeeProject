@@ -8,7 +8,7 @@ public class TrainingCollaborator {
 
 	int id;
 	int months;
-	String agency;
+	String codeAgency;
 	float nbDays;
 	Date dueDate;
 	Date realDate;
@@ -22,12 +22,12 @@ public class TrainingCollaborator {
 
 	}
 
-	public TrainingCollaborator(int id, int months, String agency, float nbDays, Date dueDate, Date realDate,
-			String formationName, String place, String lastName, String firstName, String provider) {
-
+	public TrainingCollaborator(int id, int months, String codeAgency, float nbDays, Date dueDate, Date realDate,
+			String trainingName, String place, String lastName, String firstName, String provider) {
+		super();
 		this.id = id;
 		this.months = months;
-		this.agency = agency;
+		this.codeAgency = codeAgency;
 		this.nbDays = nbDays;
 		this.dueDate = dueDate;
 		this.realDate = realDate;
@@ -54,12 +54,12 @@ public class TrainingCollaborator {
 		this.months = months;
 	}
 
-	public String getAgency() {
-		return agency;
+	public String getCodeAgency() {
+		return codeAgency;
 	}
 
-	public void setAgency(String agency) {
-		this.agency = agency;
+	public void setCodeAgency(String codeAgency) {
+		this.codeAgency = codeAgency;
 	}
 
 	public float getNbDays() {
@@ -125,6 +125,4 @@ public class TrainingCollaborator {
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	
-
 }
