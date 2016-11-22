@@ -33,10 +33,6 @@ public class Application {
 		service.createTraining(listImport);
 		service.createCollaborator(listImport);
 		//service.createJoiningTable(listCollab, listTraining);
-		EntityManager em = EmFactory.createEntityManager();
-		em.getTransaction().begin();
-		em.close();
-		EmFactory.getInstance().close();
 		
 		
 		
@@ -47,6 +43,12 @@ public class Application {
 		// Training training = new Training();
 		// TrainingChoice trainingChoice = new TrainingChoice();
 		
+		
+		//A ne pas toucher quoi qu'il arrive !!!
+		EntityManager em = EmFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.close();
+		EmFactory.getInstance().close();		
 	}
 
 }

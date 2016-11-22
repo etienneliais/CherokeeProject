@@ -156,6 +156,8 @@ public class CherokeeService {
 		EntityManager emJoin = EmFactory.createEntityManager();
 		emJoin.getTransaction().begin();
 			
+
+
 		
 		emJoin.close();
 		

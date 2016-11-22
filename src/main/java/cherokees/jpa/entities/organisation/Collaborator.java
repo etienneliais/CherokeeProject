@@ -11,29 +11,30 @@ public class Collaborator {
 	String firstName;
 	String lastName;
 	String codeAgency;
-	//@ManyToOne
-//	TrainingChoice trainingChoice;
+	@ManyToOne
+	TrainingChoice trainingChoice;
 	
 	
 	public Collaborator() {
 	}
 
-	public Collaborator(Integer id, String firstName, String lastName, String codeAgency) {
+	public Collaborator(Integer id, String firstName, String lastName, String codeAgency,TrainingChoice trainingChoice) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.codeAgency = codeAgency;
+		this.trainingChoice = trainingChoice;
 
 	}
 
-	/*public TrainingChoice getTrainingChoice() {
+	public TrainingChoice getTrainingChoice() {
 		return trainingChoice;
 	}
 
 	public void setTrainingChoice(TrainingChoice trainingChoice) {
 		this.trainingChoice = trainingChoice;
-	}*/
-
+	}
+	
 	public Integer getId() {
 		return id;
 	}

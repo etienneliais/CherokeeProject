@@ -15,7 +15,7 @@ public class TrainingChoice {
 	Integer id;
 	//@OneToMany
 	//Collaborator collaborator;
-	//@ManyToOne
+	//@OneToMany
 	//Training training;
 
 	public TrainingChoice() {
