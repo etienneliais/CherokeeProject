@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Training {
@@ -19,6 +20,8 @@ public class Training {
 	Date dueDate;
 	Date realDate;
 	String provider;
+	/*@OneToMany
+	TrainingChoice trainingChoice;*/
 		
 	public Training() {
 		

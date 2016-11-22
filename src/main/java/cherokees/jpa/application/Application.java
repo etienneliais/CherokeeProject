@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.cfg.CreateKeySecondPass;
 
+import cherokees.jpa.business.CRUDService;
 import cherokees.jpa.business.CherokeeService;
 import cherokees.jpa.entities.TrainingCollaborator;
 import cherokees.jpa.entities.organisation.Collaborator;
@@ -22,16 +23,19 @@ public class Application {
 		
 		
 		CherokeeService service = new CherokeeService();
+		CRUDService crud = new CRUDService();
 		List<TrainingCollaborator> listBadass = service.createTrainingCollaborator();
 		service.createTraining(listBadass);
 		service.createCollaborator(listBadass);
+		
+		//System.out.println("All : " + crud.findAllCollaborators());
 		
 		
 		//Collaborator collaborator = new Collaborator();
 		//Training training = new Training();
 		//TrainingChoice trainingChoice = new TrainingChoice();
 		
-
+		
 	}
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -31,6 +32,7 @@ public class CherokeeService {
 
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
+
 	public List<TrainingCollaborator> createTrainingCollaborator() throws IOException {
 
 		List<TrainingCollaborator> imported = new ArrayList<TrainingCollaborator>();
@@ -46,8 +48,6 @@ public class CherokeeService {
 		int colNum = ws.getRow(0).getLastCellNum();
 		String[][] data = new String[rowNum][colNum];
 		
-	
-		
 		// implementing datas
 		for (int i = 0; i < rowNum; i++) {
 			try {
@@ -57,28 +57,22 @@ public class CherokeeService {
 				collab.setMonths(convertStringToInt(row, 0));
 				collab.setCodeAgency(row.getCell(1).toString());
 				collab.setNbDays(convertStringToFloat(row, 2));
-
 				collab.setDueDate(row.getCell(3).getDateCellValue());
-
 				collab.setRealDate(row.getCell(4).getDateCellValue());
-
 				collab.setTrainingName(row.getCell(5).toString());
 				collab.setPlace(row.getCell(6).toString());
 				collab.setLastName(row.getCell(7).toString());
 				collab.setFirstName(row.getCell(8).toString());
 				collab.setProvider(row.getCell(9).toString());
 				imported.add(collab);
-		
-				
-		        
-				System.out.println("import : " + collab.getId());
-				System.out.println("import : " + collab.getDueDate());
+				//System.out.println("import : " + collab.getId());
+				//System.out.println("import : " + collab.getDueDate());
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println(e.getMessage());
+				//System.out.println(e.getMessage());
 			}
 		}
-		System.out.println("import : " + imported);
+		//System.out.println("import : " + imported);
 		return imported;
 	}
 
@@ -114,13 +108,11 @@ public class CherokeeService {
 			trainee.setProvider(collab.getProvider());
 			list.add(trainee);
 			
-			
 	        emtrainee.persist(trainee);
-	       
-	        
+	          
 		}
 		 emtrainee.getTransaction().commit();
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
 		
 		emtrainee.close();
 	}
@@ -130,6 +122,7 @@ public class CherokeeService {
 		EntityManager emCollab = EmFactory.createEntityManager();
 		emCollab.getTransaction().begin();
 		List<Collaborator> list = new ArrayList<Collaborator>();
+		
 		for (TrainingCollaborator collab : Collaborators) {
 			Collaborator collaborator = new Collaborator();
 			collaborator.setCodeAgency(collab.getCodeAgency());
@@ -137,15 +130,21 @@ public class CherokeeService {
 			collaborator.setLastName(collab.getLastName());
 			list.add(collaborator);
 			
+			Query q = emCollab.createQuery("SELECT c FROM Collaborator c WHERE c.lastName=:lastName AND c.firstName=:firstName AND c.codeAgency=:codeAgency");
+			q.setParameter("lastName", collab.getLastName());
+			q.setParameter("firstName", collab.getFirstName());
+			q.setParameter("codeAgency", collab.getCodeAgency());
+			if(q.getResultList().isEmpty()){
+				emCollab.persist(collaborator);	
+			};
 			
-			emCollab.persist(collaborator);
-			
-	        
 		}
+		
 		emCollab.getTransaction().commit();
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + list);
 		emCollab.close();
 		EmFactory.getInstance().close();
+		
 	}
 	
 }

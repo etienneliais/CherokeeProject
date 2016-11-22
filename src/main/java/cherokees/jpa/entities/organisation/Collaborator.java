@@ -1,9 +1,6 @@
 package cherokees.jpa.entities.organisation;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Collaborator {
@@ -14,6 +11,8 @@ public class Collaborator {
 	String firstName;
 	String lastName;
 	String codeAgency;
+	/*@ManyToOne
+	TrainingChoice trainingChoice;*/
 	
 	
 	public Collaborator() {
