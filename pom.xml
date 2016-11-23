@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cherokee</groupId>
 	<artifactId>formationCherokees</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>formationCherokees Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -13,6 +13,11 @@
 		<hibernate.version>4.3.6.Final</hibernate.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<modules>
+		<module>modele</module>
+		<module>importation</module>
+		<module>webapp</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
