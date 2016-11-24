@@ -1,4 +1,4 @@
-package cherokees.jpa.entities.organisation;
+package cherokees.jpa.entities;
 
 import java.util.Date;
 

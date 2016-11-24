@@ -1,11 +1,10 @@
-package cherokees.jpa.entities.organisation;
+package cherokees.jpa.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.*;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TrainingChoice {
