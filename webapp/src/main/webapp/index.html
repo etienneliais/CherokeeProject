@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formation Cherokee</title>
+
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../../../materialize/css/materialize.min.css" media="screen,projection" />
+<link href="application.css" rel="stylesheet">
+
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="application.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body>
+	<div id="crudFlipContainer" class="flip-container">
+		<div class="flipper">
+			<div class="front">
+				<table class="collaborator">
+					<thead>
+						<th>ID</th>
+						<th>Last Name</th>
+						<th>First Name</th>
+						<th>Code Agency</th>
+						<th></th>
+					</thead>
+				</table>
+				<a id="createButton" class="waves-effect waves-light btn">Ajouter</a>
+			</div>
+			<div class="back">
+				<div class="row">
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s12">
+								<input placeholder="" id="lastName" type="text" class="validate">
+								<label for="lastName">Last Name</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input placeholder="" id="firstName" type="text" class="validate">
+								<label for="firstName">First Name</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input placeholder="" id="codeAgency" type="text" class="validate">
+								<label for="codeAgency">Code Agency</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col s12">
+								<a id="okButton" class="waves-effect waves-light btn">OK</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
